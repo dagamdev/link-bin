@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* color-scheme: dark light; */
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  --Principal-color: #28ABE1;
+  --Secondary-color: #2591BE;
+  --Background-color: #d3d3d3;
+  /* --Secondari-color: #CCD8E5; */
+  --Text-color: #111111;
+  --Element-color: #dadee4;
+  --Theme-color: #d49f0c;
+  --Shadow: 0 2px 8px #858585;
+  --Theme-shadow: 6px 6px 12px #b3b3b3,
+    -6px -6px 12px #ececec;
+  --Icon-shadow: 4px 4px 8px #b3b3b3,
+    -4px -4px 8px #ececec;
+  --Group-shadow: 4px 4px 8px #b3b3b3,
+    -4px -4px 8px #ececec;
+  --Border-color: #adadad;
+  --Tooltip-color: #eeeeee;
+  --Selector-color: #4b4b4b;
+
+  @media (prefers-color-scheme: dark) {
+    --Background-color: #161515;
+    --Text-color: #ececec;
+    --Element-color: #252525;
+    --Theme-color: #0075b8;
+    --Shadow: 0 2px 8px #070707;
+    --Theme-shadow: 6px 6px 12px #1f1f1f,
+      -6px -6px 12px #2b2b2b;
+    --Group-shadow: 8px 8px 16px #1f1f1f,
+      -8px -8px 16px #2b2b2b;
+    --Icon-shadow: 4px 4px 8px #1f1f1f,
+      -4px -4px 8px #2b2b2b;
+    --Border-color: #0c0c0c;
+    --Tooltip-color: #383838;
+    --Selector-color: #bbbbbb;
+  }
+}
+
+body {
+  color: var(--Text-color);
+  position: relative;
+  background-color: var(--Background-color);
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+ul{
+  list-style: none;
+}
