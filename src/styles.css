@@ -38,6 +38,10 @@
   }
 }
 
+* {
+  margin: 0;
+}
+
 body {
   color: var(--Text-color);
   position: relative;

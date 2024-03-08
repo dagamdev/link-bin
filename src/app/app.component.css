@@ -1,0 +1,33 @@
+:root {
+  min-height: 100vh;
+}
+
+section {
+  border: 1px solid gray;
+  padding: 10px;
+  display: grid;
+}
+
+main {
+  padding: 10px;
+  /* min-height: 100vh; */
+
+  display: grid;
+  gap: 8px;
+  grid-template-areas:
+  "sidebar header"
+  "sidebar body"
+  "sidebar body";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
+}
+
+.header {
+  grid-area: header;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.body {
+  grid-area: body;
+}
