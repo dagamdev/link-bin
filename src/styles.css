@@ -1,54 +1,91 @@
 :root {
-  /* color-scheme: dark light; */
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color-scheme: dark light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-  --Principal-color: #28ABE1;
-  --Secondary-color: #2591BE;
-  --Background-color: #d3d3d3;
-  /* --Secondari-color: #CCD8E5; */
-  --Text-color: #111111;
-  --Element-color: #dadee4;
-  --Theme-color: #d49f0c;
-  --Shadow: 0 2px 8px #858585;
-  --Theme-shadow: 6px 6px 12px #b3b3b3,
-    -6px -6px 12px #ececec;
-  --Icon-shadow: 4px 4px 8px #b3b3b3,
-    -4px -4px 8px #ececec;
-  --Group-shadow: 4px 4px 8px #b3b3b3,
-    -4px -4px 8px #ececec;
-  --Border-color: #adadad;
-  --Tooltip-color: #eeeeee;
-  --Selector-color: #4b4b4b;
+  --primary: #ddd7ce;
+  --secondary: #c6c1b9;
+  --accent: #ff524a;
+  --text: #111111;
+
+  --md: 8px;
+  --lg: 16px;
+  --xl: 24px;
+  --2xl: 32px;
+  --3xl: 40px;
 
   @media (prefers-color-scheme: dark) {
-    --Background-color: #161515;
-    --Text-color: #ececec;
-    --Element-color: #252525;
-    --Theme-color: #0075b8;
-    --Shadow: 0 2px 8px #070707;
-    --Theme-shadow: 6px 6px 12px #1f1f1f,
-      -6px -6px 12px #2b2b2b;
-    --Group-shadow: 8px 8px 16px #1f1f1f,
-      -8px -8px 16px #2b2b2b;
-    --Icon-shadow: 4px 4px 8px #1f1f1f,
-      -4px -4px 8px #2b2b2b;
-    --Border-color: #0c0c0c;
-    --Tooltip-color: #383838;
-    --Selector-color: #bbbbbb;
+    --primary: #222831;
+    --secondary: #393E46;
+    --accent: #00ADB5;
+    --text: #EEEEEE;
   }
+
+  color: var(--text);
 }
 
-* {
-  margin: 0;
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  color: var(--Text-color);
-  position: relative;
-  background-color: var(--Background-color);
-  transition: color 0.5s ease, background-color 0.5s ease;
+  margin: 0;
+  background-color: var(--primary);
 }
 
-ul{
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+strong {
+  font-weight: bolder;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+ul {
   list-style: none;
 }
