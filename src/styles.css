@@ -7,15 +7,17 @@
   --accent: #ff524a;
   --text: #111111;
 
-  --md: 8px;
+  --xs: 4px;
+  --sm: 6px;
+  --base: 8px;
   --lg: 16px;
   --xl: 24px;
   --2xl: 32px;
   --3xl: 40px;
 
   @media (prefers-color-scheme: dark) {
-    --primary: #222831;
-    --secondary: #393E46;
+    --primary: #171717;
+    --secondary: #262626;
     --accent: #00ADB5;
     --text: #EEEEEE;
   }
@@ -30,7 +32,7 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 main {
@@ -54,6 +56,7 @@ pre {
 }
 
 a {
+  color: var(--text);
   background-color: transparent;
 }
 
