@@ -1,0 +1,33 @@
+.root {
+  min-height: 100vh;
+  padding: var(--lg);
+  box-sizing: border-box;
+  
+  display: grid;
+  gap: var(--lg);
+  grid-template-areas:
+  "sidebar header"
+  "sidebar body";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;  
+}
+
+.root > * {
+  padding: var(--md);
+  border: 1px solid #737373;
+  border-radius: var(--md);
+  /* background-color: var(--primary); */
+  /* box-shadow: 0 2px 12px #111111; */
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.body {
+  grid-area: body;
+}
