@@ -1,0 +1,36 @@
+.toggle {
+  padding: var(--sm);
+  margin: 5px;
+  border-radius: var(--sm);
+  border: none;
+}
+
+nav {
+  margin-top: var(--base);
+}
+
+a {
+  margin-top: var(--base);
+  font-size: var(--lg);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  column-gap: var(--base);
+}
+
+a:first-child {
+  margin-top: 0;
+}
+
+a picture {
+  height: 50px;
+  width: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: #64748b;
+}
+
+a:first-child picture {
+  background-color: var(--accent);
+}
