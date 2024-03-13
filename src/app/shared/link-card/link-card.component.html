@@ -1,6 +1,13 @@
-<a [href]="link.url" target="_blank">
+<a [href]="link.url" target="_blank" [title]="link.description ?? ''">
   <picture>
-    <img [src]="baseIconUrl+link.url" [alt]="link.description">
+    <img [src]="baseIconUrl+link.url" [alt]="'Icono de la pagina ' + link.url">
   </picture>
   <strong>{{link.name}}</strong>
+  @if (bin) {
+    <p [style.background-color]="bin.color ? bin.color + 60 : ''" [style.border-color]="bin.color ?? ''">
+      @if (bin.emoji) {
+        <span>{{bin.emoji}} </span>
+      }{{bin.name}}
+    </p>
+  }
 </a>
