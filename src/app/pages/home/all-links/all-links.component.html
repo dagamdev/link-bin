@@ -1,0 +1,12 @@
+<app-layout>
+  <button (click)="createLink()">Create new link</button>
+  <ul>
+    @for (link of links(); track link.id) {
+      <li>
+        <app-link-card [link]="link" />
+      </li>
+    } @empty {
+      <p>No hat enlaces</p>
+    }
+  </ul>
+</app-layout>

@@ -1,0 +1,19 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--lg);
+  margin: 0;
+  padding: 0;
+}
+
+li a {
+  display: block;
+  text-decoration: none;
+}
+
+@media (width >= 1000px) {
+  ul {
+    gap: var(--xl);
+  }
+}
