@@ -1,27 +1,27 @@
-<button class="toggle" (click)="toggleExpandSidebar()">
-  @if (sidebarExpand()) {
-    <app-sidebar-collapse />
-  } @else {
-    <app-sidebar-expand />
-  }
-</button>
-
 <nav>
   <a routerLink="/">
-    <picture>
-      <link-icon [size]="30" />
-    </picture>
-    Link bin
+    <div>
+      <link-icon [size]="26" />
+    </div>
+    <span>Link bin</span>
   </a>
 
   @for (bin of bins(); track bin.id) {
     <a [routerLink]="['/bins', bin.id]">
-      <picture [style.background-color]="bin.color ? bin.color : ''">
+      <div [style.background-color]="bin.color ? bin.color : ''">
         {{bin.emoji ?? bin.name.slice(2)}}
-      </picture>
+      </div>
 
-      {{bin.emoji}} {{bin.name}}
+      <span>
+        {{bin.name}}
+      </span>
     </a>
   }
+
+  <button>
+    <div>
+      <app-plus [size]="26" />
+    </div>
+    <span>Crear contenedor</span>
+  </button>
 </nav>
-Sidebar
