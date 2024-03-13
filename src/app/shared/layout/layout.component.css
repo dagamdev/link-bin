@@ -13,19 +13,29 @@
 }
 
 .root > * {
-  padding: var(--md);
-  border: 1px solid #737373;
-  border-radius: var(--md);
-  /* background-color: var(--primary); */
-  /* box-shadow: 0 2px 12px #111111; */
+  padding: var(--lg);
+  border: 1px solid var(--border);
+  border-radius: var(--base);
+  background-color: var(--primary);
 }
 
 .header {
+  top: 0;
+  position: sticky;
   grid-area: header;
 }
 
 .sidebar {
+  top: 0;
+  position: sticky;
+  max-height: calc(100vh - var(--2xl));
+  overflow: auto;
   grid-area: sidebar;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .body {
