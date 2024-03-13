@@ -1,5 +1,5 @@
 .root {
-  min-height: 100vh;
+  height: 100vh;
   padding: var(--lg);
   box-sizing: border-box;
   
@@ -20,14 +20,10 @@
 }
 
 .header {
-  top: 0;
-  position: sticky;
   grid-area: header;
 }
 
 .sidebar {
-  top: 0;
-  position: sticky;
   max-height: calc(100vh - var(--2xl));
   overflow: auto;
   grid-area: sidebar;
@@ -39,5 +35,7 @@
 }
 
 .body {
+  overflow: auto;
   grid-area: body;
+  scrollbar-color: var(--secondary) var(--primary);
 }
