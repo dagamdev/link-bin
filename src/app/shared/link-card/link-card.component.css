@@ -2,15 +2,29 @@ a {
   display: flex;
 }
 
-img {
-  width: 48px;
-  height: 48px;
+picture {
+  display: flex;
+  padding: var(--sm);
   border-radius: 50%;
   background-color: var(--secondary);
+  transition-property: border-radius, box-shadow;
+  transition-duration: .3s;
+  transition-timing-function: ease;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   transition: border-radius .3s ease;
 }
 
 a:hover {
+  picture {
+    border-radius: var(--base);
+    box-shadow: var(--neumorphism);
+  }
+
   img {
     border-radius: var(--base);
   }
@@ -18,4 +32,57 @@ a:hover {
 
 strong {
   display: none;
+}
+
+p {
+  display: none;
+}
+
+@media (width >= 1000px) {
+  a {
+    padding: var(--lg);
+    text-decoration: none;
+    flex-direction: column;
+    row-gap: var(--base);
+    border-radius: var(--base);
+    background-color: var(--secondary);
+    transition: box-shadow 0.3s ease;
+  }
+
+  a:hover {
+    box-shadow: var(--neumorphism-lg);
+
+    picture {
+      box-shadow: none;
+    }
+  }
+
+  picture {
+    padding: 0;
+    transition: none;
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  strong {
+    display: block;
+    max-width: 64px;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    margin: 0 auto;
+    border: 1px solid;
+    padding: var(--xs) var(--base);
+    display: inline;
+    font-size: x-small;
+    border-radius: var(--lg);
+  }
 }
