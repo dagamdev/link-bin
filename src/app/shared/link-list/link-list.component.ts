@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, signal } from '@angular/core'
 import { LinkCardComponent } from '../link-card/link-card.component'
 import type { Link } from '@/core/models/link'
 
@@ -10,5 +10,5 @@ import type { Link } from '@/core/models/link'
   styleUrl: './link-list.component.css'
 })
 export class LinkListComponent {
-  @Input({required: true}) links: Link[] = []
+  @Input({required: true}) links = signal<Link[]>([])
 }

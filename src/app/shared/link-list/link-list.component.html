@@ -1,5 +1,5 @@
 <ul>
-  @for (link of links; track link.id) {
+  @for (link of links(); track link.id) {
     <li>
       <app-link-card [link]="link" />
     </li>
