@@ -1,5 +1,5 @@
 <nav>
-  <a routerLink="/">
+  <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{exact: true}">
     <div>
       <link-icon [size]="26" />
     </div>
@@ -7,9 +7,9 @@
   </a>
 
   @for (bin of bins(); track bin.id) {
-    <a [routerLink]="['/bins', bin.id]">
+    <a [routerLink]="['/bins', bin.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
       <div [style.background-color]="bin.color ? bin.color : ''">
-        {{bin.emoji ?? bin.name.slice(2)}}
+        {{bin.emoji ?? bin.name.slice(0, 3)}}
       </div>
 
       <span>
