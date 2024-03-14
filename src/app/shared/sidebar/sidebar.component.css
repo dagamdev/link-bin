@@ -5,6 +5,21 @@ a, button {
   column-gap: var(--lg);
   align-items: center;
   text-decoration: none;
+
+  &.active {
+    position: relative;
+
+    &::after {
+      left: -16px;
+      content: '';
+      position: absolute;
+      width: var(--sm);
+      height: 30px;
+      background-color: var(--accent);
+      border-top-right-radius: var(--sm);
+      border-bottom-right-radius: var(--sm);
+    }
+  }
 }
 
 a:first-child {
