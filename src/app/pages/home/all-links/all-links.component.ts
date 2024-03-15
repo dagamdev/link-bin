@@ -18,14 +18,4 @@ export class AllLinksComponent {
   constructor (private linkService: LinkService) {
     linkService.links.subscribe(this.links.set)
   }
-
-  createLink() {
-    const newLink = this.linkService.createLink({
-      binId: '113',
-      name: 'Link name',
-      url: 'https://www.youtube.com/watch?v=zUYQLUSrWeI'
-    })
-
-    console.log(newLink)
-  }
 }
