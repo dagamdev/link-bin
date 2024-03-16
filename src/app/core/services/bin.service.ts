@@ -1,42 +1,32 @@
 import { Injectable } from '@angular/core'
 import { type Bin } from '../models/bin'
+import { BehaviorSubject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class BinService {
-  #bins: Bin[] = [
-    {
-      id: '1',
-      name: 'Hola',
-      color: '#6666C8'
-    },
-    {
-      id: '2',
-      name: 'Tools',
-      emoji: '🛠️',
-      color: '#738387'
-    },
-    {
-      id: '113',
-      name: 'UI',
-      emoji: '🪄',
-      color: '#22CF90'
-    },
-    {
-      id: '1asd',
-      name: 'VIP',
-      emoji: '⭐'
-    },
-    {
-      id: '1k4',
-      name: 'Hola'
-    },
-  ]
+  bins = new BehaviorSubject<Bin[]>([])
+  bins$ = this.bins.asObservable()
 
-  constructor() { }
+  constructor() {
+    if (typeof localStorage !== 'undefined') {
+      const bins = JSON.parse(localStorage.getItem('bins') ?? 'undefined')
+      console.log(bins)
+    }
+  }
 
-  get () {
-    return this.#bins
+  getById (binId: string) {
+    return this.bins.value.find(b => b.id === binId)
+  }
+
+  create (newBinData: Omit<Bin, 'id'>) {
+    const newBin = {
+      id: crypto.randomUUID(),
+      ...newBinData
+    }
+    this.bins.next([...this.bins.value, newBin])
+
+    return newBin
   }
 }
