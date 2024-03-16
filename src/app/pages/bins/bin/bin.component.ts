@@ -22,7 +22,7 @@ export class BinComponent {
   set id (binId: string) {
     this.binId = binId
     this.bin.set(this.binService.getById(binId))
-    this.linkService.links.subscribe(links => {
+    this.linkService.links$.subscribe(links => {
       this.links.set(links.filter(l => l.binId === binId))
     })
   }
