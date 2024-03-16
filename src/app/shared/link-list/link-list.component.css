@@ -1,3 +1,39 @@
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--xl);
+  margin-inline: var(--xl);
+  justify-content: space-between;
+
+  button {
+    color: var(--green);
+    border: none;
+    padding: var(--base);
+    box-shadow: var(--shadow);
+    font-weight: bolder;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    transition: border-radius .3s ease;
+    
+    .text {
+      display: none;
+    }
+    
+    @media (width >= 1000px) {
+      padding: var(--base) var(--2xl);
+      border-radius: var(--base);
+
+      .text {
+        display: inline;
+      }
+
+      .icon {
+        display: none;
+      }
+    }
+  }
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -15,5 +51,19 @@ li a {
 @media (width >= 1000px) {
   ul {
     gap: var(--xl);
+  }
+}
+
+div {
+  display: grid;
+  justify-content: center;
+  
+  h2 {
+    text-align: center;
+  }
+
+  button {
+    min-width: 260px;
+    margin-top: var(--xl);
   }
 }
