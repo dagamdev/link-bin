@@ -29,6 +29,6 @@ export class ModalService {
   }
 
   loadModal (){
-    this.load.next(true)
+    if (!this.load.value) this.load.next(true)
   }
 }
