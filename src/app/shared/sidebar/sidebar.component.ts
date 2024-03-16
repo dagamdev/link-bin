@@ -7,6 +7,7 @@ import { SidebarExpandComponent } from '@/icons/sidebar-expand/sidebar-expand.co
 import { SidebarCollapseComponent } from '@/icons/sidebar-collapse/sidebar-collapse.component'
 import { CommonModule } from '@angular/common'
 import { PlusComponent } from '@/icons/plus/plus.component'
+import { ModalService } from '@/core/services/modal.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -21,8 +22,19 @@ import { PlusComponent } from '@/icons/plus/plus.component'
 })
 export class SidebarComponent {
   bins = signal<Bin[]>([])
-
-  constructor (private binService: BinService) {
+  
+  constructor (private binService: BinService, private modalService: ModalService) {
     binService.bins.subscribe(this.bins.set)
+  }
+
+  loadModal () {
+    this.modalService.loadModal()
+  }
+
+  createBin () {
+    this.modalService.openModal({
+      type: 'create',
+      target: 'bin'
+    })
   }
 }
