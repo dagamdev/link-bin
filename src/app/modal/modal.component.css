@@ -1,0 +1,155 @@
+dialog {
+  inset: 0;
+  border: none;
+  margin: auto;
+  padding: var(--xl);
+  padding-top: var(--2xl);
+  position: relative;
+  max-width: 90%;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--base);
+  background-color: var(--secondary);
+  animation: Card_show .4s ease forwards;
+}
+
+dialog::backdrop {
+  animation: Bg_show .4s ease forwards;
+}
+
+dialog[close] {
+  animation: Card_show .4s ease forwards, Card_hide .3s ease forwards;
+}
+
+dialog[close]::backdrop {
+  animation: Bg_show .4s ease forwards, Bg_hide .3s ease forwards;
+}
+
+@keyframes Bg_show {
+  to {
+    backdrop-filter: blur(2px) brightness(20%);
+  }
+}
+
+@keyframes Bg_hide {
+  to {
+    backdrop-filter: none;
+  }
+}
+
+
+@keyframes Card_show {
+  from {
+    opacity: 0;
+    scale: .8;
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1)
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes Card_hide {
+  20% {
+    opacity: 1;
+    transform: scale(1.1)
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6)
+  }
+}
+
+.close {
+  top: var(--base);
+  right: var(--base);
+  color: var(--opacity-txt);
+  border: none;
+  display: flex;
+  padding: var(--sm);
+  position: absolute;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: color .3s ease, background-color 0.3s ease;
+
+  &:hover {
+    color: var(--text);
+    background-color: var(--primary);
+  }
+}
+
+form {
+  width: 300px;
+  display: grid;
+  row-gap: var(--lg);
+
+  button:disabled {
+    cursor: not-allowed;
+    background-color: var(--opacity-txt);
+  }
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: var(--lg);
+}
+
+label span {
+  font-weight: bolder;
+}
+
+input, textarea, select {
+  min-width: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  display: block;
+  padding: var(--base);
+  box-sizing: border-box;
+  margin-top: var(--base);
+  border-radius: var(--sm);
+}
+
+input {
+  display: block;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 300px;
+}
+
+input[type='color'] {
+  width: calc(var(--2xl) * 2);
+  height: var(--2xl);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: var(--base);
+  }
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+}
+
+.form-section {
+  width: 300px;
+  display: grid;
+  column-gap: var(--lg);
+  grid-template-columns: repeat(2, 1fr);
+}
