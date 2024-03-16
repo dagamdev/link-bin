@@ -16,6 +16,6 @@ export class AllLinksComponent {
   links = signal<Link[]>([])
 
   constructor (private linkService: LinkService) {
-    linkService.links.subscribe(this.links.set)
+    linkService.links$.subscribe(this.links.set)
   }
 }
