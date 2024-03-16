@@ -1,9 +1,24 @@
-<ul>
-  @for (link of links(); track link.id) {
-    <li>
-      <app-link-card [link]="link" />
-    </li>
-  } @empty {
-    <p>No hay enlaces</p>
-  }
-</ul>
+@if (links().length) {
+  <header>
+    <h3>Enlaces {{links().length}}</h3>
+    <button (mouseenter)="loadModal()" (click)="createLink()">
+      <span class="text">Crear</span>
+      <span class="icon">
+        <app-plus />
+      </span>
+    </button>
+  </header>
+  
+  <ul>
+    @for (link of links(); track link.id) {
+      <li>
+        <app-link-card [link]="link" />
+      </li>
+    }
+  </ul>
+} @else {
+  <div>
+    <h2>No hay enlaces</h2>
+    <button class="success" (mouseenter)="loadModal()" (click)="createLink()">Crear enlace</button>
+  </div>
+}
