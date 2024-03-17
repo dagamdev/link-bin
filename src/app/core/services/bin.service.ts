@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { type Bin } from '../models/bin'
 import { BehaviorSubject } from 'rxjs'
+import { LocalStorageService } from './local-storage.service'
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,8 @@ export class BinService {
   bins = new BehaviorSubject<Bin[]>([])
   bins$ = this.bins.asObservable()
 
-  constructor() {
-    if (typeof localStorage !== 'undefined') {
-      const bins = JSON.parse(localStorage.getItem('bins') ?? 'undefined')
-      console.log(bins)
-    }
+  constructor (private localStoreService: LocalStorageService) {
+    this.bins.next(localStoreService.get('bins') ?? [])
   }
 
   getById (binId: string) {
@@ -25,7 +23,10 @@ export class BinService {
       id: crypto.randomUUID(),
       ...newBinData
     }
-    this.bins.next([...this.bins.value, newBin])
+    const updatedData = [...this.bins.value, newBin]
+    
+    this.bins.next(updatedData)
+    this.localStoreService.update('bins', updatedData)
 
     return newBin
   }
