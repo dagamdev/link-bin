@@ -124,7 +124,7 @@ input {
 
 textarea {
   resize: vertical;
-  max-height: 300px;
+  max-height: 200px;
 }
 
 input[type='color'] {
