@@ -2,7 +2,7 @@ export interface Tooltip {
   x: number
   y: number
   direction: TooltipDirection
-  options: TooltipOption[]
+  content: string | TooltipOption[]
 }
 
 type TooltipDirection = 'top' | 'bottom' | 'left' | 'right'
