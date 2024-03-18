@@ -30,4 +30,8 @@ export class BinService {
 
     return newBin
   }
+
+  deleteById (binId: string) {
+    this.bins.next(this.bins.value.filter(b => b.id !== binId))
+  }
 }

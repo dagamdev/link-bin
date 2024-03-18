@@ -37,4 +37,8 @@ export class LinkService {
     this.links.next(updatedData)
     this.localStorageService.update('links', updatedData)
   }
+
+  deleteById (linkId: string) {
+    this.links.next(this.links.value.filter(l => l.id !== linkId))
+  }
 }
