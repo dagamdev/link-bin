@@ -10,8 +10,8 @@ export class BinService {
   bins = new BehaviorSubject<Bin[]>([])
   bins$ = this.bins.asObservable()
 
-  constructor (private localStoreService: LocalStorageService) {
-    this.bins.next(localStoreService.get('bins') ?? [])
+  constructor (private localStorageService: LocalStorageService) {
+    this.bins.next(localStorageService.get('bins') ?? [])
   }
 
   getById (binId: string) {
@@ -26,12 +26,15 @@ export class BinService {
     const updatedData = [...this.bins.value, newBin]
     
     this.bins.next(updatedData)
-    this.localStoreService.update('bins', updatedData)
+    this.localStorageService.update('bins', updatedData)
 
     return newBin
   }
 
-  deleteById (binId: string) {
-    this.bins.next(this.bins.value.filter(b => b.id !== binId))
+  delete (binId: string) {
+    const updatedData = this.bins.value.filter(b => b.id !== binId)
+
+    this.bins.next(updatedData)
+    this.localStorageService.update('bins', updatedData)
   }
 }

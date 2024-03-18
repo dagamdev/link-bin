@@ -28,17 +28,9 @@ export class LinkService {
   }
 
   delete (linkId: string) {
-    const existLink = this.links.value.some(l=> l.id === linkId)
-
-    if (!existLink) return
-
     const updatedData = this.links.value.filter(l => l.id !== linkId)
 
     this.links.next(updatedData)
     this.localStorageService.update('links', updatedData)
-  }
-
-  deleteById (linkId: string) {
-    this.links.next(this.links.value.filter(l => l.id !== linkId))
   }
 }
