@@ -1,9 +1,9 @@
 export interface Tooltip {
   x: number
   y: number
+  type: 'normal' | 'bin' | 'link'
+  content?: string
   direction: TooltipDirection
-  content: string | TooltipOption[]
 }
 
 type TooltipDirection = 'top' | 'bottom' | 'left' | 'right'
-type TooltipOption = 'create' | 'update' | 'delete'
