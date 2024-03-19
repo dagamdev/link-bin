@@ -1,5 +1,10 @@
 <nav>
-  <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{exact: true}">
+  <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
+    [routerLinkActiveOptions]="{exact: true}"
+    (mouseenter)="tooltipSv.onMouseEnter($event)"
+    (mouseleave)="tooltipSv.onMouseLeave()"
+    data-direction="right" data-content="Link bin"
+  >
     <div>
       <link-icon [size]="26" />
     </div>
@@ -7,7 +12,12 @@
   </a>
 
   @for (bin of bins(); track bin.id) {
-    <a [routerLink]="['/bins', bin.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <a [routerLink]="['/bins', bin.id]" routerLinkActive="active" ariaCurrentWhenActive="page"
+      (mouseenter)="tooltipSv.onMouseEnter($event)"
+      (mouseleave)="tooltipSv.onMouseLeave()"
+      (contextmenu)="tooltipSv.onContextMenu($event)"
+      data-direction="right" [attr.data-content]="bin.name" data-type="bin" [attr.data-id]="bin.id"
+    >
       <div [style.background-color]="bin.color ? bin.color : ''">
         {{bin.emoji ?? bin.name.slice(0, 3)}}
       </div>
@@ -18,7 +28,11 @@
     </a>
   }
 
-  <button (mouseenter)="loadModal()" (click)="createBin()">
+  <button (mouseenter)="loadModal()" (click)="createBin()"
+    (mouseenter)="tooltipSv.onMouseEnter($event)"
+    (mouseleave)="tooltipSv.onMouseLeave()"
+    data-direction="right" data-content="Crear contenedor"
+  >
     <div>
       <app-plus [size]="26" />
     </div>
