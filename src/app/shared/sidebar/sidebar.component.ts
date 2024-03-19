@@ -8,6 +8,7 @@ import { SidebarCollapseComponent } from '@/icons/sidebar-collapse/sidebar-colla
 import { CommonModule } from '@angular/common'
 import { PlusComponent } from '@/icons/plus/plus.component'
 import { ModalService } from '@/core/services/modal.service'
+import { TooltipService } from '@/core/services/tooltip.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -23,7 +24,11 @@ import { ModalService } from '@/core/services/modal.service'
 export class SidebarComponent {
   bins = signal<Bin[]>([])
   
-  constructor (private binService: BinService, private modalService: ModalService) {
+  constructor (
+    private binService: BinService, 
+    private modalService: ModalService,
+    public tooltipSv: TooltipService
+  ) {
     binService.bins.subscribe(this.bins.set)
   }
 
