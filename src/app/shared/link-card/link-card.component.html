@@ -1,4 +1,9 @@
-<a [href]="link.url" target="_blank" [title]="link.description ?? ''">
+<a [href]="link.url" target="_blank" [title]="link.description ?? ''"
+  (mouseenter)="tooltipSv.onMouseEnter($event)"
+  (mouseleave)="tooltipSv.onMouseLeave()"
+  (contextmenu)="tooltipSv.onContextMenu($event)"
+  data-direction="top" [attr.data-content]="link.name" data-type="link" [attr.data-id]="link.id"
+>
   <picture>
     <img [src]="baseIconUrl+link.url" [alt]="'Icono de la pagina ' + link.url">
   </picture>

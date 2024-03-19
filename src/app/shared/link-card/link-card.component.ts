@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment'
 import { BinService } from '@/core/services/bin.service'
 import type { Link } from '@/core/models/link'
 import type { Bin } from '@/core/models/bin'
+import { TooltipService } from '@/core/services/tooltip.service'
 
 @Component({
   selector: 'app-link-card',
@@ -25,5 +26,5 @@ export class LinkCardComponent {
     return this.linkData
   }
 
-  constructor (private binService: BinService) { }
+  constructor (private binService: BinService, public tooltipSv: TooltipService) { }
 }
