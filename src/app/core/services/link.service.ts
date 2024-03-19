@@ -31,6 +31,19 @@ export class LinkService {
     return newLink
   }
 
+  update (linkId: string, updatedData: Partial<Omit<Link, 'id'>>) {
+    const linkList = this.links.value.slice()
+    const binIndex = linkList.findIndex(l => l.id === linkId)
+
+    if (binIndex < 0) return
+
+    const bin = linkList[binIndex]
+    linkList[binIndex] = {...bin, ...updatedData}
+
+    this.links.next(linkList)
+    this.localStorageService.update('bins', linkList)
+  }
+
   delete (linkId: string) {
     const updatedData = this.links.value.filter(l => l.id !== linkId)
 

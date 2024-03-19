@@ -27,21 +27,34 @@ export class BinService {
       id: crypto.randomUUID(),
       ...newBinData
     }
-    const updatedData = [...this.bins.value, newBin]
+    const updatedBins = [...this.bins.value, newBin]
     
-    this.bins.next(updatedData)
-    this.localStorageService.update('bins', updatedData)
+    this.bins.next(updatedBins)
+    this.localStorageService.update('bins', updatedBins)
 
     return newBin
   }
 
-  delete (binId: string) {
-    const updatedData = this.bins.value.filter(b => b.id !== binId)
-    const linkUpdatedData = this.linkService.links.value.filter(l => l.binId !== binId)
+  update (binId: string, updatedData: Partial<Omit<Bin, 'id'>>) {
+    const binList = this.bins.value.slice()
+    const binIndex = binList.findIndex(b => b.id === binId)
 
-    this.bins.next(updatedData)
-    this.linkService.links.next(linkUpdatedData)
-    this.localStorageService.update('bins', updatedData)
-    this.localStorageService.update('links', linkUpdatedData)
+    if (binIndex < 0) return
+
+    const bin = binList[binIndex]
+    binList[binIndex] = {...bin, ...updatedData}
+
+    this.bins.next(binList)
+    this.localStorageService.update('bins', binList)
+  }
+
+  delete (binId: string) {
+    const updatedBins = this.bins.value.filter(b => b.id !== binId)
+    const updatedLinks= this.linkService.links.value.filter(l => l.binId !== binId)
+
+    this.bins.next(updatedBins)
+    this.linkService.links.next(updatedLinks)
+    this.localStorageService.update('bins', updatedBins)
+    this.localStorageService.update('links', updatedLinks)
   }
 }
