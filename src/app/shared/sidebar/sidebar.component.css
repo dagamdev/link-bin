@@ -12,9 +12,10 @@ a, button {
     &::after {
       left: -16px;
       content: '';
-      position: absolute;
       width: var(--sm);
       height: 30px;
+      position: absolute;
+      pointer-events: none;
       background-color: var(--accent);
       border-top-right-radius: var(--sm);
       border-bottom-right-radius: var(--sm);
