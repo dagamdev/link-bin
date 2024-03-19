@@ -13,6 +13,10 @@ export class LinkService {
   constructor(private localStorageService: LocalStorageService) {
     this.links.next(localStorageService.get('links') ?? [])
   }
+
+  getById (linkId: string) {
+    return this.links.value.find(l => l.id === linkId)
+  }
   
   create (linkData: Omit<Link, 'id'>) {
     const newLink: Link = {
