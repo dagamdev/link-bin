@@ -7,7 +7,7 @@ import { LocalStorageService } from './local-storage.service'
   providedIn: 'root'
 })
 export class LinkService {
-  private links = new BehaviorSubject<Link[]>([])
+  links = new BehaviorSubject<Link[]>([])
   links$ = this.links.asObservable()
 
   constructor(private localStorageService: LocalStorageService) {
