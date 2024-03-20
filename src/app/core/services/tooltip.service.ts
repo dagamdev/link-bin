@@ -34,7 +34,11 @@ export class TooltipService {
       y: currentTarget.offsetTop,
       type: 'normal',
       content,
-      direction
+      direction,
+      target: {
+        width: currentTarget.clientWidth,
+        height: currentTarget.clientHeight
+      }
     })
   }
 
