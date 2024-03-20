@@ -3,45 +3,56 @@
     <app-x />
   </button>
 
-  <form [formGroup]="modalForm" (ngSubmit)="onSubmit()">
-    <h2>{{textsDic[modalData().type]}} {{textsDic[modalData().target]}}</h2>
-    @if (modalData().target === 'link') {
-      <label>
-        Link
-        <input (input)="onChangeUrl()" type="url" formControlName="url" required>
-      </label>
-    }
-    <label>
-      <span>Nombre</span>
-      <input type="text" formControlName="name" required>
-    </label>
-    <label>
-      <span>Descripción</span>
-      <textarea name="description" formControlName="description" rows="2" maxlength="250"></textarea>
-    </label>
-    @if (modalData().target === 'bin') {
-      <div class="form-section">
-        <label>
-          <span>Emoji</span>
-          <input type="text" formControlName="emoji">
-          <!-- pattern="\p{Emoji}" -->
-        </label>
-        <label>
-          <span>Color</span>
-          <input type="color" formControlName="color">
-        </label>
-      </div>
-    } @else {
-      <label>
-        <span>Contenedor</span>
-        <select formControlName="binId">
-          @for (bin of bins(); track bin.id) {
-            <option [value]="bin.id">{{bin.name}}</option>
-          }
-        </select>
-      </label>
-    }
+  @if (modalData().type === 'confirm') {
+    <h2>{{textsDic[modalData().type]}}</h2>
 
-    <button class="success" [disabled]="!modalForm.valid">{{textsDic[modalData().type]}}</button>
-  </form>
+    <p class="paragraph">{{modalData().confirmText}}</p>
+
+    <div class="buttons">
+      <button class="danger" (click)="confirmDelete()">Confirmar</button>
+      <button (click)="closeModal()">Cancelar</button>
+    </div>
+  } @else {
+    <form [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+      <h2>{{textsDic[modalData().type]}} {{textsDic[modalData().target]}}</h2>
+      @if (modalData().target === 'link') {
+        <label>
+          Link
+          <input (input)="onChangeUrl()" type="url" formControlName="url" required>
+        </label>
+      }
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="name" required>
+      </label>
+      <label>
+        <span>Descripción</span>
+        <textarea name="description" formControlName="description" rows="2" maxlength="250"></textarea>
+      </label>
+      @if (modalData().target === 'bin') {
+        <div class="form-section">
+          <label>
+            <span>Emoji</span>
+            <input type="text" formControlName="emoji">
+            <!-- pattern="\p{Emoji}" -->
+          </label>
+          <label>
+            <span>Color</span>
+            <input type="color" formControlName="color">
+          </label>
+        </div>
+      } @else {
+        <label>
+          <span>Contenedor</span>
+          <select formControlName="binId">
+            @for (bin of bins(); track bin.id) {
+              <option [value]="bin.id">{{bin.name}}</option>
+            }
+          </select>
+        </label>
+      }
+      <button class="success" [disabled]="!modalForm.valid">{{textsDic[modalData().type]}}</button>
+    </form>
+  }
+  
 </dialog>

@@ -27,10 +27,10 @@ export class ModalComponent {
   textsDic = {
     'create': 'Crear',
     'update': 'Actualizar',
+    'confirm': 'Confirmación',
     'bin': 'contenedor',
     'link': 'enlace'
   }
-  emojiRegex = /\p{Emoji}/
   defaultColor = '#737373'
   modalForm = new FormGroup({
     url: new FormControl('', 
@@ -42,6 +42,7 @@ export class ModalComponent {
     color: new FormControl(this.defaultColor),
     binId: new FormControl(''),
   })
+  updateElementId?: string
 
   constructor (
     private modalService: ModalService,
@@ -52,6 +53,10 @@ export class ModalComponent {
     modalService.modalState$.subscribe(data => {
       if (data.show) {
         this.dialog?.nativeElement.showModal()
+        this.modalForm.patchValue({
+          ...data.defaultData
+        })
+        this.updateElementId = data.updateElementId
       }
       this.modalData.set(data)
     })
@@ -60,6 +65,11 @@ export class ModalComponent {
 
   closeModal () {
     this.dialog?.nativeElement.setAttribute('close', '')
+  }
+
+  confirmDelete () {
+    this.dialog?.nativeElement.setAttribute('close', '')
+    this.modalData().confirmAction?.()
   }
   
   onAnimationEnd (event: AnimationEvent) {
@@ -71,7 +81,6 @@ export class ModalComponent {
 
   onSubmit () {
     const valid = this.modalForm.valid
-    console.log(this.modalForm.value)
 
     if (this.modalData().type === 'create') {
       if (this.modalData().target === 'bin') {
@@ -83,6 +92,23 @@ export class ModalComponent {
         })
       } else {
         this.linkService.create({
+          url: this.modalForm.value.url as string,
+          name: this.modalForm.value.name as string,
+          binId: this.modalForm.value.binId ?? undefined, 
+          description: this.modalForm.value.description ?? undefined,
+        })
+      }
+    } else {
+      if (!this.updateElementId) return
+      if (this.modalData().target === 'bin') {
+        this.binService.update(this.updateElementId, {
+          emoji: this.modalForm.value.emoji ?? undefined,
+          name: this.modalForm.value.name as string,
+          color: this.modalForm.value.color ?? this.defaultColor,
+          description: this.modalForm.value.description ?? undefined
+        })
+      } else {
+        this.linkService.update(this.updateElementId, {
           url: this.modalForm.value.url as string,
           name: this.modalForm.value.name as string,
           binId: this.modalForm.value.binId ?? undefined, 

@@ -5,7 +5,7 @@ dialog {
   padding: var(--xl);
   padding-top: var(--2xl);
   position: relative;
-  max-width: 90%;
+  max-width: 360px;
   box-shadow: var(--shadow-lg);
   border-radius: var(--base);
   background-color: var(--secondary);
@@ -100,6 +100,16 @@ h2 {
   text-align: center;
   margin-top: 0;
   margin-bottom: var(--lg);
+}
+
+.paragraph {
+  margin-block: var(--xl);
+}
+
+.buttons {
+  display: grid;
+  column-gap: var(--lg);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 label span {
