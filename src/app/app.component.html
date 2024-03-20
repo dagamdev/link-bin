@@ -1,7 +1,27 @@
 @if (loadModal()) {
   <app-modal />
 }
-@if (tooltip()) {
-  <div></div>
+
+@if (tooltip) {
+  <div id="tooltip" [class]="['tooltip', tooltip.type, tooltip.direction]" [style]="position()">
+    @if (tooltip.type === 'normal') {
+      <span>{{tooltip.content}}</span>
+      <div class="arrow" [style]="(tooltip.direction === 'top' || tooltip.direction === 'bottom')
+        ? {left: arrowPosition() + 'px'}
+        : (tooltip.direction === 'left' || tooltip.direction === 'right')
+          ? {top: arrowPosition() + 'px'}
+          : undefined"></div>
+    } @else {
+      <ul>
+        <li (click)="tooltipService.optionUpdate()"
+          (mouseenter)="modalService.loadModal()"
+        >Editar</li>
+        <li (click)="tooltipService.optionDelete()" 
+          (mouseenter)="modalService.loadModal()"
+        >Eliminar</li>
+      </ul>
+    }
+  </div>
 }
+
 <router-outlet />
