@@ -109,8 +109,6 @@ export class TooltipService {
     this.optionDelete = () => {
       this.close()
 
-      console.log('Delete', type)
-
       const confirmAction = () => {
         if (type === 'bin') {
           this.binService.delete(id)
