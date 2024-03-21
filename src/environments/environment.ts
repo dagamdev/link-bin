@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://localhost:246/api/'
+  apiUrl: 'https://my-api-production-065b.up.railway.app/'
 }
