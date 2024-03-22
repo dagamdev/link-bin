@@ -76,6 +76,7 @@ export class ModalComponent {
     if (event.target instanceof HTMLDialogElement && event.target.hasAttribute('close')) {
       this.dialog?.nativeElement.removeAttribute('close')
       this.dialog?.nativeElement.close()
+      this.modalForm.reset({ color: this.defaultColor })
     }
   }
 
@@ -91,10 +92,13 @@ export class ModalComponent {
           description: this.modalForm.value.description ?? undefined
         })
       } else {
+        let { binId } = this.modalForm.value
+        if (binId === 'none') binId = null
+
         this.linkService.create({
           url: this.modalForm.value.url as string,
           name: this.modalForm.value.name as string,
-          binId: this.modalForm.value.binId ?? undefined, 
+          binId: binId ?? undefined, 
           description: this.modalForm.value.description ?? undefined,
         })
       }
@@ -108,10 +112,13 @@ export class ModalComponent {
           description: this.modalForm.value.description ?? undefined
         })
       } else {
+        let { binId } = this.modalForm.value
+        if (binId === 'none') binId = null
+
         this.linkService.update(this.updateElementId, {
           url: this.modalForm.value.url as string,
           name: this.modalForm.value.name as string,
-          binId: this.modalForm.value.binId ?? undefined, 
+          binId: binId ?? undefined, 
           description: this.modalForm.value.description ?? undefined,
         })
       }
