@@ -84,10 +84,7 @@ export class AppComponent {
                   x += target.width / 2
                   y -= margin
                   this.arrowPosition.set(node.offsetWidth / 2)
-                } else {
-                  
                 }
-
 
                 break
               }
@@ -97,11 +94,7 @@ export class AppComponent {
                   x += target.width + margin
                   y += target.height / 2
                   this.arrowPosition.set(node.clientHeight / 2)
-                } else if (x - node.clientWidth / 2 > window.innerWidth) {
-
                 }
-                console.log(x, node.clientWidth, window.innerWidth)
-
 
                 break
               }
