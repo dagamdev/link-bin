@@ -45,6 +45,7 @@
         <label>
           <span>Contenedor</span>
           <select formControlName="binId">
+            <option value="none">Ninguno</option>
             @for (bin of bins(); track bin.id) {
               <option [value]="bin.id">{{bin.name}}</option>
             }
