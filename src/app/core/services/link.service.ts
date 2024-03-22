@@ -41,7 +41,7 @@ export class LinkService {
     linkList[binIndex] = {...bin, ...updatedData}
 
     this.links.next(linkList)
-    this.localStorageService.update('bins', linkList)
+    this.localStorageService.update('links', linkList)
   }
 
   delete (linkId: string) {
