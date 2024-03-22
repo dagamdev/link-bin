@@ -17,11 +17,11 @@ dialog::backdrop {
 }
 
 dialog[close] {
-  animation: Card_show .4s ease forwards, Card_hide .3s ease forwards;
-}
+  animation: Card_hide .3s ease forwards;
 
-dialog[close]::backdrop {
-  animation: Bg_show .4s ease forwards, Bg_hide .3s ease forwards;
+  &::backdrop {
+    animation: Bg_hide .3s ease forwards;
+  }
 }
 
 @keyframes Bg_show {
@@ -31,6 +31,9 @@ dialog[close]::backdrop {
 }
 
 @keyframes Bg_hide {
+  from {
+    backdrop-filter: blur(2px) brightness(20%);
+  }
   to {
     backdrop-filter: none;
   }
@@ -57,6 +60,10 @@ dialog[close]::backdrop {
 }
 
 @keyframes Card_hide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
   20% {
     opacity: 1;
     transform: scale(1.1)
