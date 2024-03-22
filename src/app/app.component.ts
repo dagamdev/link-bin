@@ -83,7 +83,6 @@ export class AppComponent {
                 if (target) {
                   x += target.width / 2
                   y -= margin
-                  this.arrowPosition.set(node.offsetWidth / 2)
                 }
 
                 break
@@ -93,7 +92,6 @@ export class AppComponent {
                 if (target) {
                   x += target.width + margin
                   y += target.height / 2
-                  this.arrowPosition.set(node.clientHeight / 2)
                 }
 
                 break
@@ -103,9 +101,7 @@ export class AppComponent {
                 if (target) {
                   x += target.width / 2
                   y += target.height + margin
-                  this.arrowPosition.set(node.clientWidth / 2)
                 }
-
 
                 break
               }
@@ -114,7 +110,6 @@ export class AppComponent {
                 if (target) {
                   x -= margin
                   y += target.height / 2
-                  this.arrowPosition.set(node.clientHeight / 2)
                 }
 
                 break
@@ -125,6 +120,42 @@ export class AppComponent {
               top: y + 'px',
               left: x + 'px'
             })
+
+            switch (this.tooltip.direction) {
+              case 'top': {
+                if (target) {
+                  console.log(node.clientWidth, node.offsetWidth)
+                  this.arrowPosition.set(node.clientWidth / 2)
+                }
+
+                break
+              }
+            
+              case 'right': {
+                if (target) {
+                  this.arrowPosition.set(node.clientHeight / 2)
+                }
+
+                break
+              }
+        
+              case 'bottom': {
+                if (target) {
+                  this.arrowPosition.set(node.clientWidth / 2)
+                }
+
+
+                break
+              }
+        
+              case 'left': {
+                if (target) {
+                  this.arrowPosition.set(node.clientHeight / 2)
+                }
+
+                break
+              }
+            }
           }
         })
       }
