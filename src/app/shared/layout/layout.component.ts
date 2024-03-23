@@ -1,12 +1,11 @@
-import { LinkComponent } from '@/icons/link/link.component'
 import { Component } from '@angular/core'
-import { RouterLink } from '@angular/router'
 import { SidebarComponent } from '../sidebar/sidebar.component'
+import { HeaderNavComponent } from '../header-nav/header-nav.component'
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterLink, LinkComponent, SidebarComponent],
+  imports: [SidebarComponent, HeaderNavComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
