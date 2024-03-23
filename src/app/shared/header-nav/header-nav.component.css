@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  column-gap: var(--lg);
+}
+
+a {
+  font-size: large;
+  font-weight: bolder;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.active {
+    color: var(--accent);
+  }
+}
