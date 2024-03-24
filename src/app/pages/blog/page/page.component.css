@@ -1,0 +1,15 @@
+:host {
+  padding: var(--lg);
+  display: grid;
+  row-gap: var(--lg);
+  min-height: 100vh;
+  box-sizing: border-box;
+  grid-template-rows: auto 1fr;
+}
+
+header, main {
+  padding: var(--lg);
+  border: 1px solid var(--border);
+  border-radius: var(--base);
+  background-color: var(--primary);
+}
